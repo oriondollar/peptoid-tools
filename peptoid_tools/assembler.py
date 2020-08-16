@@ -3,7 +3,7 @@ import math
 import pkg_resources
 import numpy as np
 
-RES_LIB = pkg_resources.resource_filename('peptoid-tools.peptoid_tools', 'res_lib')
+RES_LIB = pkg_resources.resource_filename('peptoid_tools', 'res_lib')
 
 def vec_align(a, b):
     """
