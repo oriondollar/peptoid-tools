@@ -115,7 +115,7 @@ class Packer:
                 align_pos = last_res.positions[:,i]
         first_res = oligomer2.chain[0]
         for i, atom in enumerate(first_res.atoms):
-            if atom == 'NR':
+            if atom == 'NL':
                 move_pos = first_res.positions[:,i]
         x_move = align_pos[0] - move_pos[0]
         y_move = align_pos[1] - move_pos[1]
@@ -486,7 +486,7 @@ class CarbonResidue(Residue):
 class PeptoidResidue(Residue):
     def __init__(self, name):
         Residue.__init__(self, name)
-        if self.name[0] == 'B': ### FUTURE POTENTIAL PROBLEM
+        if self.name[0] == 'B' or self.name[0] == 'O': ### FUTURE POTENTIAL PROBLEM
             self.type = 'hydrophobic'
         elif self.name[0] == 'C':
             self.type = 'polar'
@@ -619,8 +619,8 @@ class PeptoidResidue(Residue):
         elif cap_type == 'amine':
             self.atoms[0] = 'CLP'
             self.atoms[1] = 'OL'
-            self.atoms[2] = 'NR'
-            self.atoms[3] = 'CA1'
+            self.atoms[2] = 'NL'
+            self.atoms[3] = 'CA'
 
             C_to_N_vec = self.positions[:,2] - self.positions[:,0]
             C_to_O_vec = self.positions[:,0] - self.positions[:,1]

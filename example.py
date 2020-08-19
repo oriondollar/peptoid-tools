@@ -6,7 +6,7 @@ from peptoid_tools import assembler
 # can be found in res_lib. We'll be looking at BTM_perp and BTM_par for 
 # the perpendicular and parallel arrangements
 builder = assembler.Builder()
-builder.assemble('BTM_perp', 6, 'CTM', 6, 'bilayer')
+builder.assemble('BTM_par', 6, 'CTM', 6, 'bilayer')
 
 # Next we intialize a packer object that packs the peptoid into a sheet.
 # the x_gen() method copies the peptoid in the x-dimension n times with a
@@ -16,14 +16,14 @@ builder.assemble('BTM_perp', 6, 'CTM', 6, 'bilayer')
 # to create a bigger sheet all you need to adjust are the number of repeats
 # in x and y.
 packer = assembler.Packer(builder)
-packer.x_gen(n_repeats=5, d=18, ring_type='perpendicular')
-packer.copy_in_dim(n_repeats=17, d=4.5)
+packer.x_gen(n_repeats=1, d=18, ring_type='parallel')
+packer.copy_in_dim(n_repeats=7, d=4.5)
 
 # The last thing we do is create a writer object and send it the packer object
 # which contains the fully formed sheet as well as the filename we want to
 # write to. 
 writer = assembler.PDBWriter()
-writer.write_pack(packer, 'thic_perp_18.pdb')
+writer.write_pack(packer, '2_by_8_par.pdb')
 
 
 
